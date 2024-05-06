@@ -38,7 +38,7 @@ resourceEndpoint: string = '/resource';
 
   create(item: any): Observable<T> {
     return this.http.post<T>(this.resourcePath(), JSON.stringify(item), this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 
   // Delete resource
