@@ -1,0 +1,7 @@
+<mat-toolbar class="mat-toolbar" color="primary">
+  <span>RunningArtist Business app</span>
+  <div class="mat-spacer">
+  <a mat-button *ngFor="let options of options" [routerLink]="options.path">{{options.title}}</a>
+  </div>
+
+</mat-toolbar>
