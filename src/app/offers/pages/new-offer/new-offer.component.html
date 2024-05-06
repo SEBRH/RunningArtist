@@ -4,13 +4,6 @@
   <form [formGroup]="newOfferGroup" (ngSubmit)="onSubmit()" class="create">
     <h1>New Offer</h1>
     <mat-form-field>
-      <mat-label>Offer ID</mat-label>
-      <input matInput formControlName="id" placeholder="artist title" type="Number">
-      <mat-error *ngIf="newOfferGroup.get('id')?.invalid">
-        Please enter a valid title
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
       <mat-label>Artist Title</mat-label>
       <input matInput formControlName="title" placeholder="artist title">
       <mat-error *ngIf="newOfferGroup.get('title')?.invalid">
@@ -29,7 +22,7 @@
       <input matInput formControlName="points" placeholder="artist title" type="Number">
       <mat-hint>Points must be less than 100</mat-hint>
       <mat-error *ngIf="newOfferGroup.get('points')?.invalid">
-        Please enter valid points
+        Please enter valid points [0-100]
       </mat-error>
     </mat-form-field>
     <mat-form-field>

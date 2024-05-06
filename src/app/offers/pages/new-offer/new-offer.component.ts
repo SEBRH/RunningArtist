@@ -15,7 +15,6 @@ export class NewOfferComponent {
 
   constructor(private formBuilder: FormBuilder, private router: Router, private artistService: ArtistService) {
     this.newOfferGroup = this.formBuilder.group({
-      id: new FormControl(null, [Validators.required, Validators.min(1)]),
       title: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       description: new FormControl('', [Validators.required, Validators.minLength(2)]),
       points: new FormControl(null, [Validators.required, Validators.max(100)]),
@@ -33,11 +32,7 @@ export class NewOfferComponent {
     const selectedData = this.newOfferGroup.value;
     if (this.newOfferGroup.valid && this.newOfferGroup.dirty) {
       const updatedOffer: ArtistEntity = {
-        id: selectedData.id,
-        title: String(selectedData.title),
-        description: String(selectedData.description),
-        points: selectedData.points,
-        businessId: selectedData.businessId
+        ...selectedData
       };
       this.artistService.create(updatedOffer).subscribe( response => {
           console.log('Artist updated successfully:', response);
